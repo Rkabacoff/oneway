@@ -14,14 +14,14 @@
 #' mileage <- oneway(mpg ~ cyl, mtcars)
 oneway <- function(formula, data){
 
-  # delete missing data
-  data <- na.omit(data)
+  # make sure group variable is factor
+  group <- as.character(formula[[3]])
+  data[[group]] <- as.factor(data[[group]])
 
   #anova
   fit <- lm(formula, data)
 
   # summary statistics
-  group <- as.character(formula[[3]])
   y <- as.character(formula[[2]])
 
   stats <-  data %>%
