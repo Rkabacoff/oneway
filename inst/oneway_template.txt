@@ -1,0 +1,30 @@
+## One-way ANOVA
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(knitr)
+library(oneway)
+fit <- oneway(xxxformula, xxxdata)
+
+```
+
+### Analysis
+
+```{r}
+summary(fit)
+plot(fit)
+```
+
+### Assumptions
+
+```{r}
+assumptions(fit)
+```
+
+### Post Hoc Comparisons
+
+```{r}
+posthoc(fit)
+```
+
