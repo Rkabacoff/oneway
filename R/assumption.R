@@ -1,15 +1,15 @@
 #' ANOVA assumptions
 #'
-#' assumptions() assesses ANOVA assumptions of normality of residuals,
+#' \code{assumptions()} assesses ANOVA assumptions of normality of residuals
 #' and equality of group variances on the outcome variable
 #'
-#' @param fit an object of class 'oneway'.
+#' @param fit an object of class \code{oneway}.
 #' @export
 #'
-#' @return two data frames, Q-Q plot and a boxplot
+#' @return ggplot2 graph
 #' @examples
-#' fit <- oneway(mpg~cyl, mtcars)
-#' plot(fit)
+#' fit <- oneway(mpg ~ cyl, mtcars)
+#' assumptions(fit)
 #'
 #' @import ggplot2 patchwork stats
 assumptions <- function(fit){
@@ -72,10 +72,11 @@ assumptions <- function(fit){
     ylab(as.character(fit$anova$terms[[2]]))
 
   ## Printing the Assumption
-  cat("\n\033[94m\033[1m\033[4m       Normality Testing       \033[24m\033[22m\033[39m\n")
+  cat("\nNormality Testing\n")
+  cat("=======================\n")
   print(result_normality)
-  cat("\n===============================\n")
-  cat("\n\033[94m\033[1m\033[4m    Equal Variance Testing     \033[24m\033[22m\033[39m\n")
+  cat("\nEqual Variance Testing\n")
+  cat("=======================\n")
   print(fligner_result)
 
   qqplot + fligner_plot +

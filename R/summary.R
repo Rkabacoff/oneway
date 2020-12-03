@@ -2,17 +2,18 @@
 #'
 #' summary.oneway summarizes the results of the one-way ANOVA
 #'
-#' @param x an object of class oneway.
+#' @param object an object of class oneway.
+#' @param ... additional options. not currently used.
 #' @export
 #'
 #' @return object of type anova and data.frame
 #' @examples
-#' mileage <- oneway(mpg ~ cyl, mtcars)
-#' summary(mileage)
-summary.oneway <- function(x){
-  if(!inherits(x, "oneway"))
+#' fit <- oneway(mpg ~ cyl, mtcars)
+#' summary(fit)
+summary.oneway <- function(object, ...){
+  if(!inherits(object, "oneway"))
     stop("Must be class 'oneway")
-  anova(x$anova)
+  anova(object$anova)
 }
 
 

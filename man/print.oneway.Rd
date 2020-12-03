@@ -18,6 +18,6 @@ the input object is returned silently
 print.oneway prints one-way ANOVA results
 }
 \examples{
-mileage <- oneway(mpg ~ cyl, mtcars)
-print(mileage)
+fit <- oneway(mpg ~ cyl, mtcars)
+print(fit)
 }

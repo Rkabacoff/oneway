@@ -22,5 +22,8 @@ path to HTML report
 Create an HTML ANOVA report
 }
 \examples{
+\dontrun{
 report(mpg ~ cyl, mtcars)
+}
+
 }

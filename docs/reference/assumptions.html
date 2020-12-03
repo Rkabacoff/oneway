@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot one-way ANOVA — plot.oneway • oneway</title>
+<title>ANOVA assumptions — assumptions • oneway</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Plot one-way ANOVA — plot.oneway" />
-<meta property="og:description" content="plot.oneway creates group comparisons for a one-way ANOVA and gives the user an option to choose among several types of graphs." />
+<meta property="og:title" content="ANOVA assumptions — assumptions" />
+<meta property="og:description" content="assumptions() assesses ANOVA assumptions of normality of residuals
+and equality of group variances on the outcome variable" />
 
 
 
@@ -106,46 +107,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot one-way ANOVA</h1>
+    <h1>ANOVA assumptions</h1>
     
-    <div class="hidden name"><code>plot.oneway.Rd</code></div>
+    <div class="hidden name"><code>assumptions.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>plot.oneway</code> creates group comparisons for a one-way ANOVA and gives the user an option to choose among several types of graphs.</p>
+    <p><code>assumptions()</code> assesses ANOVA assumptions of normality of residuals
+and equality of group variances on the outcome variable</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for oneway</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, plot <span class='op'>=</span> <span class='st'>"boxplot"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>assumptions</span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>an object of class <code>oneway</code></p></td>
-    </tr>
-    <tr>
-      <th>plot</th>
-      <td><p>a character string representing the type of plot. Default is <code>boxplot</code>.
-Other types of plot: <code>violin</code> and <code>density_ridges</code>.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>additional arguments passed to the chosen plot function.</p></td>
+      <th>fit</th>
+      <td><p>an object of class <code>oneway</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a ggplot2 graph</p>
+    <p>ggplot2 graph</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='oneway.html'>oneway</a></span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='va'>cyl</span>, <span class='va'>mtcars</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>fit</span>, plot <span class='op'>=</span> <span class='st'>"boxplot"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>`stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='img'><img src='plot.oneway-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>fit</span>, plot <span class='op'>=</span> <span class='st'>"violin"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>`stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='img'><img src='plot.oneway-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>fit</span>, plot <span class='op'>=</span> <span class='st'>"density_ridges"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Picking joint bandwidth of 1.38</span></div><div class='img'><img src='plot.oneway-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>assumptions</span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 
+#&gt; Normality Testing
+#&gt; =======================
+#&gt;   statistic   p.value data.name
+#&gt; W 0.9475647 0.1228814       mpg
+#&gt; 
+#&gt; Equal Variance Testing
+#&gt; =======================
+#&gt;                                 statistic parameter    p.value data.name
+#&gt; Fligner-Killeen:med chi-squared  6.811309         2 0.03318509   mpg~cyl</div><div class='img'><img src='assumptions-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

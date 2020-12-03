@@ -10,8 +10,8 @@ one-way analysis of variance.
 
 ```
 if(!require(devtools)){
-  install.packages("devtools")
+  install.packages("remotes")
 }
-devtools::install_github("rkabacoff/oneway")
+remotes::install_github("rkabacoff/oneway")
 ```
 

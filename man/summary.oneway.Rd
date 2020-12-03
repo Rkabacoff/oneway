@@ -4,10 +4,12 @@
 \alias{summary.oneway}
 \title{Summarize one-way ANOVA}
 \usage{
-\method{summary}{oneway}(x)
+\method{summary}{oneway}(object, ...)
 }
 \arguments{
-\item{x}{an object of class oneway.}
+\item{object}{an object of class oneway.}
+
+\item{...}{additional options. not currently used.}
 }
 \value{
 object of type anova and data.frame
@@ -16,6 +18,6 @@ object of type anova and data.frame
 summary.oneway summarizes the results of the one-way ANOVA
 }
 \examples{
-mileage <- oneway(mpg ~ cyl, mtcars)
-summary(mileage)
+fit <- oneway(mpg ~ cyl, mtcars)
+summary(fit)
 }

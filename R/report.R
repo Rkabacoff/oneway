@@ -9,9 +9,13 @@
 #' instead of browser.
 #'
 #' @return path to HTML report
+#' @import rmarkdown
 #' @export
 #' @examples
+#' \dontrun{
 #' report(mpg ~ cyl, mtcars)
+#' }
+#'
 report <- function(formula, data, browse=TRUE){
   formula <- deparse(substitute(formula))
   data <- deparse(substitute(data))
@@ -29,7 +33,6 @@ report <- function(formula, data, browse=TRUE){
   writeLines(report, tf)
 
   # generate the report
-  library(rmarkdown)
   render(input=tf, output_format="html_document", output_file=to)
   if (browse){
     file.show(to)

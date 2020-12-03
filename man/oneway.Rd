@@ -20,5 +20,9 @@ oneway computes a one-way analysis of variance
 and includes group level summary statistics.
 }
 \examples{
-mileage <- oneway(mpg ~ cyl, mtcars)
+fit <- oneway(mpg ~ cyl, mtcars)
+summary(fit)
+assumptions(fit)
+plot(fit)
+posthoc(fit)
 }

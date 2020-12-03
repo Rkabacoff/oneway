@@ -7,17 +7,17 @@
 assumptions(fit)
 }
 \arguments{
-\item{fit}{an object of class 'oneway'.}
+\item{fit}{an object of class \code{oneway}.}
 }
 \value{
-two data frames, Q-Q plot and a boxplot
+ggplot2 graph
 }
 \description{
-assumptions() assesses ANOVA assumptions of normality of residuals,
+\code{assumptions()} assesses ANOVA assumptions of normality of residuals
 and equality of group variances on the outcome variable
 }
 \examples{
-fit <- oneway(mpg~cyl, mtcars)
-plot(fit)
+fit <- oneway(mpg ~ cyl, mtcars)
+assumptions(fit)
 
 }

@@ -138,8 +138,31 @@ dependent variable to the grouping variable.</p></td>
     <p>a list with 2 elements.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>mileage</span> <span class='op'>&lt;-</span> <span class='fu'>oneway</span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='va'>cyl</span>, <span class='va'>mtcars</span><span class='op'>)</span>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'>oneway</span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='va'>cyl</span>, <span class='va'>mtcars</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Analysis of Variance Table
+#&gt; 
+#&gt; Response: mpg
+#&gt;           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+#&gt; cyl        2 824.78  412.39  39.697 4.979e-09 ***
+#&gt; Residuals 29 301.26   10.39                      
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</div><div class='input'><span class='fu'><a href='assumptions.html'>assumptions</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 
+#&gt; Normality Testing
+#&gt; =======================
+#&gt;   statistic   p.value data.name
+#&gt; W 0.9475647 0.1228814       mpg
+#&gt; 
+#&gt; Equal Variance Testing
+#&gt; =======================
+#&gt;                                 statistic parameter    p.value data.name
+#&gt; Fligner-Killeen:med chi-squared  6.811309         2 0.03318509   mpg~cyl</div><div class='img'><img src='oneway-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>`stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='img'><img src='oneway-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='posthoc.html'>posthoc</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span>
+</div><div class='img'><img src='oneway-3.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;           diff        lwr        upr        p adj
+#&gt; 6-4  -6.920779 -10.769350 -3.0722086 3.423720e-04
+#&gt; 8-4 -11.563636 -14.770779 -8.3564942 2.543980e-09
+#&gt; 8-6  -4.642857  -8.327583 -0.9581313 1.122868e-02</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -151,7 +174,7 @@ dependent variable to the grouping variable.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Robert Kabacoff.</p>
+  <p>Developed by QAC 356 Students.</p>
 </div>
 
 <div class="pkgdown">

@@ -4,13 +4,11 @@
 #'
 #' @param model an object of class `oneway`
 #'
-#' @return a data frame and a visualization
+#' @return a data frame
 #' @export
 #' @examples
-#' /dontrun{
 #' fit <- oneway(mpg ~ cyl, mtcars)
 #' posthoc(fit)
-#' }
 
 posthoc <- function(model){
   var2 = model$anova$terms[[3]]

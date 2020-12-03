@@ -9,18 +9,68 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
+  collapse = TRUE, message=FALSE, warning=FALSE,
   comment = "#>"
 )
 ```
 
-# Introduction
+## Introduction
 
-Here is an article on using the `oneway` package.
+The **oneway* package provides a simple interface for completing a
+one-way Analysis of Variance (ANOVA). This is useful when evaluating mean
+differences between groups on a quantitative variable.
 
-```{r setup}
+### Setup and results table
+
+First the model is fit. In this example, we want to know if there is a difference in fuel efficiency based on the number of cylinders in a car engine. The data come from the `mtcars` dataset.
+
+Summary statistics and the ANOVA results are printed.
+
+```{r}
 library(oneway)
-fit <- oneway(mpg ~ carb, mtcars)
+fit <- oneway(mpg ~ cyl, data = mtcars)
 print(fit)
-plot(fit)
 ```
+
+These results can be summarized using the `summary` generic function.
+
+```{r}
+summary(fit)
+```
+
+### Plotting the results
+
+Group differences can be visualized using three types of plot - boxplot, violin plot, and ridges plots.
+
+```{r}
+plot(fit, plot="boxplot")
+```
+
+```{r}
+plot(fit, plot="violin")
+```
+
+```{r}
+plot(fit, plot="density_ridges")
+```
+
+### Test Assumptions
+
+The results assume normality of the outcome variable (mpg) and equal variances on this variable for the three groups. We can test this with the `assumptions` function.
+
+```{r}
+assumptions(fit)
+```
+
+Here, we can see the the normality assumption is met, but 4 cylinder cars 
+have greater variance.
+
+### Post hoc comparisons
+
+The ANOVA test indicates that the groups are different, but not where the differences lie. The `posthoc` function performs pairwise comparisons, controlling for the number of tests performed.
+
+```{r}
+posthoc(fit)
+```
+
+You can see that all three groups differ, with increased cylinders leading to decreased fuel efficiency.

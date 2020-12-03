@@ -10,14 +10,12 @@ posthoc(model)
 \item{model}{an object of class \code{oneway}}
 }
 \value{
-a data frame and a visualization
+a data frame
 }
 \description{
 Create a function the tests for group differences, two groups at a time using post-hoc comparisons.
 }
 \examples{
-/dontrun{
 fit <- oneway(mpg ~ cyl, mtcars)
 posthoc(fit)
-}
 }

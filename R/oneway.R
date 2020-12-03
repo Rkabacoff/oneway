@@ -11,7 +11,11 @@
 #' @return a list with 2 elements.
 #'
 #' @examples
-#' mileage <- oneway(mpg ~ cyl, mtcars)
+#' fit <- oneway(mpg ~ cyl, mtcars)
+#' summary(fit)
+#' assumptions(fit)
+#' plot(fit)
+#' posthoc(fit)
 oneway <- function(formula, data){
 
   # make sure group variable is factor
